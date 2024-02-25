@@ -27,5 +27,34 @@ namespace RecursiveSummarizer.GeminiApi
 
             return new RootObject(contents, generationConfig);
         }
+
+        public RootObject CreateCompletitionJson(string input, GenerationConfig generationConfig)
+        {
+            List<Content> contents = new List<Content>()
+            {
+             new Content("user", new List<Content.Part> { new Content.Part(input) })
+            };
+
+
+            return new RootObject(contents, generationConfig);
+        }
+
+    }
+    public class GeminiModelDTO
+    {
+
+
+        public class ContentsDto
+        {
+            public ContentsDto(string role, string text)
+            {
+                Role = role;
+                Text = text;
+            }
+
+            public string Role { get; set; } = "user";
+
+            public string Text { get; set; } = string.Empty;
+        }
     }
 }

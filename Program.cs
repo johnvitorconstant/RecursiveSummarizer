@@ -1,14 +1,14 @@
-﻿using RecursiveSummarizer.GeminiApi;
+﻿using Newtonsoft.Json;
+using RecursiveSummarizer.GeminiApi;
+using System.Net.Http.Headers;
 
 internal class Program
 {
-    private static void Main(string[] args)
+    private async static Task Main(string[] args)
     {
-        var chat = new List<GeminiModelDTO.ContentsDto>();
-        chat.Add(new GeminiModelDTO.ContentsDto("user", "teste"));
-        chat.Add(new GeminiModelDTO.ContentsDto("user", "teste 2"));
-        var teste = new GeminiConverter().ConvertContentsDtoListToRootObject(chat, new GenerationConfig());
-        return;
-       
+
+        var teste = await GeminiConnectionFactory.PostGemini(new GeminiConverter().CreateCompletitionJson("Hino brasileiro", new GenerationConfig()));
+        Console.WriteLine(teste.Content);
+
     }
 }
