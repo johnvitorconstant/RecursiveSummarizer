@@ -160,6 +160,31 @@ namespace RecursiveSummarizer.GeminiApi
         }
     }
 
+    public class GeminiResponse
+    {
+        public GeminiResponse(dynamic contentObj)
+        {
+            Answer = contentObj?["candidates"]?[0]?["content"]?["parts"]?[0]?["text"] ?? string.Empty;
+            FinishReason = contentObj?["candidates"]?[0]?["finishReason"] ?? string.Empty;
+        }
 
+        public string Answer { get;private set; }
+        public string FinishReason { get; private set; }
+
+        public override bool Equals(object? obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override string? ToString()
+        {
+            return Answer;
+        }
+    }
 
 }
