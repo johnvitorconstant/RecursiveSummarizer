@@ -28,7 +28,13 @@ namespace RecursiveSummarizer.GeminiApi
             return new RootObject(contents, generationConfig);
         }
 
-        public RootObject CreateCompletitionJson(string input, GenerationConfig generationConfig)
+        public RootObject CreateCompletionJson(string input, GenerationConfig generationConfig)
+        {
+            var contents = CreateContentJson(input, generationConfig);
+            return new RootObject(contents, generationConfig);
+        }
+
+        public List<Content> CreateContentJson(string input, GenerationConfig generationConfig)
         {
             List<Content> contents = new List<Content>()
             {
@@ -36,7 +42,7 @@ namespace RecursiveSummarizer.GeminiApi
             };
 
 
-            return new RootObject(contents, generationConfig);
+            return contents;
         }
 
     }

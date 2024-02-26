@@ -162,7 +162,7 @@ namespace RecursiveSummarizer.GeminiApi
 
     public class GeminiResponse
     {
-        public GeminiResponse(dynamic contentObj)
+        public GeminiResponse(dynamic? contentObj)
         {
             Answer = contentObj?["candidates"]?[0]?["content"]?["parts"]?[0]?["text"] ?? string.Empty;
             FinishReason = contentObj?["candidates"]?[0]?["finishReason"] ?? string.Empty;
